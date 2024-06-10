@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot de Tipos y Enfoques de Investigación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #chat-container {
+            width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        #header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        #chat-messages {
+            padding: 20px;
+            height: 300px;
+            overflow-y: scroll;
+            background-color: #f5f5f5;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+        .user-message {
+            background-color: #007bff;
+            color: #fff;
+            align-self: flex-end;
+        }
+        .bot-message {
+            background-color: #00bcd4;
+            color: #fff;
+        }
+        #input-container {
+            padding: 10px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+        }
+        #user-input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            margin-right: 10px;
+        }
+        #send-button {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="header">Chatbot de Tipos y Enfoques de Investigación</div>
+        <div id="chat-messages"></div>
+        <div id="input-container">
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
+            <button id="send-button">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        sendButton.addEventListener('click', sendMessage);
+
+        function sendMessage() {
+            const userMessage = userInput.value.trim();
+            if (userMessage !== '') {
+                appendMessage('user', userMessage);
+                // Aquí iría la lógica para enviar el mensaje al chatbot y recibir la respuesta
+                // Por ahora, simularemos la respuesta del chatbot con un mensaje estático
+                setTimeout(() => {
+                    appendMessage('bot', '¡Hola! Soy el chatbot de Tipos y Enfoques de Investigación. ¿En qué puedo ayudarte?');
+                }, 500);
+                userInput.value = '';
+            }
+        }
+
+        function appendMessage(sender, message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add(sender + '-message');
+            messageElement.textContent = message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Hacer scroll hacia abajo para mostrar el último mensaje
+        }
+    </script>
+</body>
+</html>
+
+
